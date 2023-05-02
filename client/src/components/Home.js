@@ -14,7 +14,7 @@ const Home = ({ setResult }) => {
 	const navigate = useNavigate();
 
 	const handleAddCompany = () =>
-        setCompanyInfo([...companyInfo, { name: "", position: "" }]);
+    setCompanyInfo([...companyInfo, { name: "", position: "" }]);
 
 	const handleRemoveCompany = (index) => {
 		const list = [...companyInfo];
