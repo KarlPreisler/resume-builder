@@ -27,7 +27,7 @@ const upload = multer({
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: process.env.API_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
