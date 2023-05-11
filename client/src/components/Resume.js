@@ -1,17 +1,23 @@
-import React from "react";
+import { useReactToPrint } from "react-to-print";
+import React, { useRef } from "react";
 import ErrorPage from "./ErrorPage";
 
 const Resume = ({ result }) => {
-    const replaceWithBr = (string) => {
-        return string.replace(/\n/g, "<br />");
-    };
+    const componentRef = useRef();
+
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+        documentTitle: `${result.fullName} Resume`,
+        onAfterPrint: () => alert("Print Successful!"),
+    });
 
     if (JSON.stringify(result) === "{}") {
         return <ErrorPage />;
     }
 
-    const handlePrint = () => alert("Printing");
-
+    const replaceWithBr = (string) => {
+        return string.replace(/\n/g, "<br />");
+    };
     return (
         <>
             <button onClick={handlePrint}>Print Page</button>
